@@ -1,0 +1,60 @@
+
+<div class="container-fluid">
+
+    <div class="page-header" align="center">
+        <h1>Alunos</h1>
+    </div>
+
+    <button class="btn btn-sm btn-primary" ng-click="irPara('/cadastroDeAluno')">
+        <span class="glyphicon glyphicon-plus"></span>
+        Adicionar Aluno
+    </button>
+    <br><br>
+    <select class="form-control" ng-model="selected" ng-change="carregarAlunos(selected)">
+        <option value="0" >Todos</option>
+        <option ng-repeat="curso in listaCursos" value="{{curso.id}}">{{curso.nome}}</option>
+    </select>
+
+        <div class="pager">
+    <button class="btn btn-sm btn-primary" ng-click="Anterior(pg,qnt)">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Anterior
+    </button>
+    <button class="btn btn-sm btn-primary" ng-click="Proximo(pg,qnt)">
+        Proximo
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+        </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Nome</label>
+            </th>
+            <th>
+                <label>CPF</label>
+            </th>
+            <th>
+                <label>Email</label>
+            </th>
+            <th>
+                <label>Id do curso</label>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody ng-repeat="aluno in listaAlunos">
+        <tr>
+            <td>{{aluno.id}}</td>
+            <td>{{aluno.nome}}</td>
+            <td>{{aluno.cpf}}</td>
+            <td>{{aluno.email}}</td>
+            <td>{{aluno.CursoId}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+
+    <div class="page-header" align="center">
+        <h1>Cursos</h1>
+    </div>
+
+    <button class="btn btn-sm btn-primary" ng-click="irPara('/cadastroDeCurso')">
+    <span class="glyphicon glyphicon-plus"></span>
+    Adicionar Curso
+    </button>
+
+    <br>
+    <div class="pager">
+        <button class="btn btn-sm btn-primary" ng-click="Anterior(pg,qnt)">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Anterior
+        </button>
+        <button class="btn btn-sm btn-primary" ng-click="Proximo(pg,qnt)">
+            Proximo
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <label>ID</label>
+            </th>
+            <th>
+                <label>Nome</label>
+            </th>
+
+        </tr>
+        </thead>
+
+        <tbody ng-repeat="curso in listaCursos">
+        <tr>
+            <td>{{curso.id}}</td>
+            <td>{{curso.nome}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
