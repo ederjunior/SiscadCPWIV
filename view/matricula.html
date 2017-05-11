@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:height="http://www.w3.org/1999/xhtml" xmlns:overflow="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <style rel="stylesheet" type="text/css">
+
+        .div1 { float: left; width: 40%;}
+        .meio { float: left; width: 10%;}
+        .div2 { float: left; width: 40%;}
+
+        .table1 { width:600px; height:300px; overflow:auto;}
+        .table2 { width:600px; height:300px; overflow:auto;}
+
+        .tbody {
+              cursor: pointer;
+            }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <h2>Matricula</h2>
+    </div>
+    <div class="tudo">
+        <div class="div1">
+
+            <br>
+            <select class="form-control" ng-model="cursoSelecionado" ng-change="carregarDisciplina(cursoSelecionado)">
+                <option value="">Selecione um Curso</option>
+                <option ng-repeat="curso in listaCursos" value="{{curso.id}}">{{curso.nome}}</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="table1">
+                <table class="table table-striped table-selectable-multiple">
+                <thead>
+                <tr>
+                    <th>
+                        <label>Nome</label>
+                    </th>
+                    <th>
+                        <label>CPF</label>
+                    </th>
+                    <th>
+                        <label>Selecionar</label>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody class="tbody" ng-repeat="aluno in listaAlunos">
+                <tr>
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.cpf}}</td>
+                    <td><input type="checkbox" ng-click="passarIntermediario(aluno)"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="meio" align="center">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+            <button class="btn btn-sm btn-primary" ng-click="passar()"> << / >> </button>
+
+        </div>
+        <div class="div2">
+
+            <select class="form-control" ng-model="disciplinaSelecionada" ng-change="carregarAlunosESemestres(disciplinaSelecionada)">
+                <option value="">Selecione uma Disciplina</option>
+                <option ng-repeat="disciplina in listaDisciplinas" value="{{disciplina.CursoId}}">{{disciplina.nome}}</option>
+            </select>
+            <br>
+            <select class="form-control" ng-model="semestreSelecionado" ng-change="carregarMatriculas(semestreSelecionado,disciplinaSelecionada)">
+                <option value="">Selecione um Semestre</option>
+                <option ng-repeat="semestre in listaSemestres" value="{{semestre.id}}">{{semestre.descricao}}</option>
+            </select>
+            <br>
+            <br>
+            <div class="table2">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        <label>Nome</label>
+                    </th>
+                    <th>
+                        <label>CPF</label>
+                    </th>
+
+                </tr>
+                </thead>
+
+                <tbody ng-repeat="matricula in listaMatriculas">
+                <tr>
+                    <td>{{matricula.alunonome}}</td>
+                    <td>{{matricula.alunocpf}}</td>
+                </tr>
+                </tbody>
+                <tbody ng-repeat="matricula in listaParaMatricular">
+                <tr class="info">
+                    <td>{{matricula.nome}}</td>
+                    <td>{{matricula.cpf}}</td>
+
+                </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <br>
+
+            <div align="center" ng-model="divMatricular" ng-show="semestreSelecionado">
+            <button class="btn btn-sm btn-primary" ng-click="matricular(disciplinaSelecionada,semestreSelecionado)"> Matricular Aluno(s) </button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

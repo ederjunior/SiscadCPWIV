@@ -43,4 +43,10 @@ angular.module("siscadcpwiv")
 
         });
 
+        $routeProvider.when("/matricula", {
+            templateUrl: "view/matricula.html",
+            controller : "matriculaController"
+
+        });
+
     }]);

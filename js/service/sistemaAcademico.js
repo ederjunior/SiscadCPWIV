@@ -25,6 +25,13 @@ angular.module("siscadcpwiv").factory("sistemaAcademico",
             });
         };
 
+        var _listarSemestres = function () {
+            return $http({
+                method: "GET",
+                url: "http://siscadcpwiv.herokuapp.com/semestre/list"
+            });
+        };
+
         var _listarAlunosPorIdCurso = function (id) {
             return $http({
                 method: "GET",
@@ -36,6 +43,13 @@ angular.module("siscadcpwiv").factory("sistemaAcademico",
             return $http({
                 method: "GET",
                 url: "http://siscadcpwiv.herokuapp.com/disciplina/curso/"+id
+            });
+        };
+
+        var _listarMatriculasPorIdSemestreIdDisciplina = function (idSemestre,idDisciplina) {
+            return $http({
+                method: "GET",
+                url: " http://siscadcpwiv.herokuapp.com/matricula/semestre/disciplina/"+idSemestre+"/"+idDisciplina
             });
         };
 
@@ -63,6 +77,14 @@ angular.module("siscadcpwiv").factory("sistemaAcademico",
             });
         };
 
+        var _matricular = function (matricula) {
+            return $http({
+                method: "POST",
+                url: "http://siscadcpwiv.herokuapp.com/matricula/",
+                data: matricula
+            });
+        };
+
         return {
         listarCursos : _listarCursos,
         listarDisciplinas : _listarDisciplinas,
@@ -71,6 +93,9 @@ angular.module("siscadcpwiv").factory("sistemaAcademico",
         listarDisciplinasPorIdCurso : _listarDisciplinasPorIdCurso,
         cadastrarAluno : _cadastrarAluno,
         cadastrarCurso : _cadastrarCurso,
-        cadastrarDisciplina : _cadastrarDisciplina
+        cadastrarDisciplina : _cadastrarDisciplina,
+        listarSemestres : _listarSemestres,
+        listarMatriculasPorIdSemestreIdDisciplina : _listarMatriculasPorIdSemestreIdDisciplina,
+        matricular : _matricular
         }
     });
